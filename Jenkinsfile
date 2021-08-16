@@ -11,7 +11,6 @@ pipeline {
     stage('Build') {
       steps {
         sh 'pwd'
-        sh 'sh gradlew build bootJar'
 	script {
 		docker.withRegistry("${env.AWS_ECR_URL}","${env.AWS_ECR_CRED}"){
 			def app = docker.build("healthdb:healthdb_${env.BUILD_NUMBER}")
